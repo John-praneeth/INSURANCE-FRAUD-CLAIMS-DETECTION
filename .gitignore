@@ -1,0 +1,22 @@
+# Python / Virtual Environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Data & Large Artifacts (raw CSV kept in data/raw/)
+data/processed/*.csv
+
+# Local log files
+*.log

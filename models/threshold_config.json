@@ -1,0 +1,18 @@
+{
+    "optimal_threshold": 0.4500000000000001,
+    "metrics": {
+        "threshold": 0.4500000000000001,
+        "accuracy": 0.84,
+        "precision": 0.6491228070175439,
+        "recall": 0.7551020408163265,
+        "f1_score": 0.6981132075471698,
+        "roc_auc": 0.8411947560481146,
+        "pr_auc": 0.5989296440634847,
+        "true_negatives": 131,
+        "false_positives": 20,
+        "false_negatives": 12,
+        "true_positives": 37
+    },
+    "low_risk_cutoff": 0.3,
+    "high_risk_cutoff": 0.6
+}
