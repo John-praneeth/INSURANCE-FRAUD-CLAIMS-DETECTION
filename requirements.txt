@@ -1,5 +1,5 @@
 # Insurance Fraud Claims Detection Engine - Dependencies
-python>=3.11
+# Python >= 3.11
 pandas>=2.0.0
 numpy>=1.24.0
 matplotlib>=3.7.0

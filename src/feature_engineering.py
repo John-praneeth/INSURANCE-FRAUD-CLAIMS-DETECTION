@@ -70,7 +70,7 @@ def create_engineered_features(df: pd.DataFrame) -> pd.DataFrame:
             df_out["vehicle_claim_ratio"] = df_out["vehicle_claim"] / total
 
     # Handle missing string representations '?' by converting them to explicit string 'MISSING'
-    for col in df_out.select_dtypes(include=["object"]).columns:
+    for col in df_out.select_dtypes(include=["object", "string"]).columns:
         df_out[col] = df_out[col].replace("?", "MISSING").fillna("MISSING")
 
     return df_out

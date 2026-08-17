@@ -122,8 +122,18 @@ except Exception as e:
 
 
 # Sidebar Navigation
-st.sidebar.image("https://img.icons8.com/isometric/100/shield-gradient.png", width=70)
-st.sidebar.title("Navigation Panel")
+st.sidebar.markdown(
+    """
+    <div style="text-align: center; padding: 10px 0;">
+        <div style="font-size: 48px; line-height: 1;">🛡️</div>
+        <h2 style="margin: 8px 0 0 0; color: #60a5fa; font-size: 20px; font-weight: 700;">Fraud Guard AI</h2>
+        <span style="color: #94a3b8; font-size: 12px; letter-spacing: 0.5px;">RISK SCREENING ENGINE</span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+st.sidebar.markdown("---")
+st.sidebar.subheader("Navigation")
 page = st.sidebar.radio(
     "Go to",
     ["📊 Executive Dashboard", "🔎 Claim Risk Screening", "📈 Model Analytics & Explainability", "ℹ️ About System"]
@@ -442,11 +452,11 @@ elif page == "📈 Model Analytics & Explainability":
     fig_dir = "reports/figures" if os.path.exists("reports/figures") else "../reports/figures"
 
     if os.path.exists(f"{fig_dir}/XGBoost_Optimized_roc_curve.png"):
-        st.image(f"{fig_dir}/XGBoost_Optimized_roc_curve.png", caption="ROC Curve", use_column_width=True)
+        tab1.image(f"{fig_dir}/XGBoost_Optimized_roc_curve.png", caption="ROC Curve", use_container_width=True)
     if os.path.exists(f"{fig_dir}/XGBoost_Optimized_pr_curve.png"):
-        st.image(f"{fig_dir}/XGBoost_Optimized_pr_curve.png", caption="Precision-Recall Curve", use_column_width=True)
+        tab2.image(f"{fig_dir}/XGBoost_Optimized_pr_curve.png", caption="Precision-Recall Curve", use_container_width=True)
     if os.path.exists(f"{fig_dir}/XGBoost_Optimized_threshold_sweep.png"):
-        st.image(f"{fig_dir}/XGBoost_Optimized_threshold_sweep.png", caption="Threshold Performance Sweep", use_column_width=True)
+        tab3.image(f"{fig_dir}/XGBoost_Optimized_threshold_sweep.png", caption="Threshold Performance Sweep", use_container_width=True)
 
 
 # PAGE 4: ABOUT SYSTEM

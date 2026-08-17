@@ -61,7 +61,7 @@ def get_feature_types(df: pd.DataFrame) -> Tuple[List[str], List[str]]:
         Numerical column names list, Categorical column names list.
     """
     num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-    cat_cols = df.select_dtypes(include=["object", "category"]).columns.tolist()
+    cat_cols = df.select_dtypes(include=["object", "string", "category"]).columns.tolist()
     return num_cols, cat_cols
 
 

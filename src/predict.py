@@ -3,6 +3,12 @@ Inference module for processing individual or batch insurance claim predictions.
 """
 
 import os
+import sys
+from pathlib import Path
+
+# Add project root to sys.path for direct script execution
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import json
 import joblib
 import pandas as pd
