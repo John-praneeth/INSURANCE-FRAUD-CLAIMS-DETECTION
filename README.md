@@ -1,5 +1,10 @@
 # Insurance Fraud Claims Detection Engine 🛡️
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://insurance-fraud-claims-detection.streamlit.app)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
+
+**Live Application**: [https://insurance-fraud-claims-detection.streamlit.app](https://insurance-fraud-claims-detection.streamlit.app)
+
 An end-to-end Machine Learning classification and risk-screening engine designed to analyze automobile insurance claims and flag suspicious records for human investigation.
 
 ---
@@ -157,8 +162,8 @@ Features:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/insurance-fraud-detection.git
-cd insurance-fraud-detection
+git clone https://github.com/John-praneeth/INSURANCE-FRAUD-CLAIMS-DETECTION.git
+cd INSURANCE-FRAUD-CLAIMS-DETECTION
 
 # 2. Create and activate Python 3.11+ virtual environment
 python3 -m venv .venv
