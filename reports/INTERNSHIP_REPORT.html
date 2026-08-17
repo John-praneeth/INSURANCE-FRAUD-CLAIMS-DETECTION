@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Internship Report - Insurance Fraud Claims Detection Engine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        @page {
+            size: A4;
+            margin: 20mm 15mm 20mm 15mm;
+            @top-right {
+                content: "Insurance Fraud Claims Detection Engine";
+                font-family: 'Inter', sans-serif;
+                font-size: 8pt;
+                color: #64748b;
+            }
+            @bottom-center {
+                content: counter(page);
+                font-family: 'Inter', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            font-size: 10.5pt;
+            line-height: 1.65;
+            color: #1e293b;
+            margin: 0;
+            padding: 20px 40px;
+            background-color: #ffffff;
+        }
+
+        .header-running {
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            color: #64748b;
+            font-style: italic;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 4px;
+            margin-bottom: 24px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Inter', sans-serif;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 18pt;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 13pt;
+            border-bottom: 1.5px solid #1e3a8a;
+            padding-bottom: 4px;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        h3 {
+            font-size: 11pt;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        p, li {
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-top: 6px;
+            margin-bottom: 12px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 8.5pt;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        pre, code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        pre {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 8.5pt;
+            line-height: 1.45;
+            overflow-x: auto;
+            margin: 14px 0;
+        }
+
+        .highlight-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 12px 16px;
+            margin: 15px 0;
+            font-size: 9.5pt;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .certificate-card {
+            border: 6px double #1e3a8a;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            background-color: #fcfdfe;
+            border-radius: 8px;
+        }
+
+        .certificate-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 18pt;
+            font-weight: 800;
+            color: #1e3a8a;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .author-box {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            font-weight: 600;
+        }
+
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 9pt;
+            font-weight: 600;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-running">Insurance Fraud Claims Detection Engine</div>
+
+    <!-- ACKNOWLEDGEMENT -->
+    <h1>ACKNOWLEDGEMENT</h1>
+
+    <p>In today’s competitive insurance and financial environment, fraud detection and risk screening represent critical challenges faced by insurance carriers. Fraudulent claims range from opportunistic overstatements of property damage to organized collision staging and falsified bodily injury reports. Manual auditing of every submitted claim is cost-prohibitive and slow, while blanket automated approvals expose insurers to severe financial leakage. Identifying claims that are suspicious at an early stage helps organizations allocate investigative resources efficiently and safeguard legitimate policyholders.</p>
+
+    <p>The project <strong>“Insurance Fraud Claims Detection Engine: Machine Learning Risk Screening Framework”</strong> focuses on predicting the likelihood of insurance fraud using supervised machine learning techniques. The system analyzes various multi-dimensional attributes including policyholder demographics, policy terms, incident dynamics, collision severity, vehicle attributes, and monetary claim breakdowns.</p>
+
+    <p>The project uses an Automobile Insurance Claims dataset containing <strong>1,000 customer records and 39 predictor attributes</strong>. The data is processed and analyzed using Python libraries such as <strong>Pandas, NumPy, Scikit-Learn, Imbalanced-Learn, XGBoost, Matplotlib, and Seaborn</strong>. Data preprocessing techniques are applied to handle missing values, encode categorical attributes, extract domain-specific ratios, and mitigate class imbalance using SMOTE before training the machine learning model.</p>
+
+    <p>An <strong>XGBoost Classifier combined with SMOTE and class-weight scaling</strong> is used to predict whether a claim is likely fraudulent. In addition to predicting fraud probability, the system categorizes the claim into <strong>Low Risk (<30%), Medium Risk (30%–60%), or High Risk (>60%)</strong> tiers. This risk-based approach makes the prediction easier to understand and actionable for human claims adjusters.</p>
+
+    <p>The developed system is implemented as an interactive <strong>Streamlit web application</strong> deployed on <strong>Streamlit Community Cloud</strong>. Users can enter claim details, obtain predicted fraud risk probabilities, visual risk gauges, and tailored investigative recommendations. The application also provides executive dashboards, confusion matrix heatmaps, and comprehensive model performance metrics.</p>
+
+    <p>Overall, this project demonstrates the practical application of data analysis, domain feature engineering, supervised classification, imbalanced learning, model explainability, and cloud web application development to solve a real-world enterprise financial risk problem.</p>
+
+    <div class="author-box">
+        <div>[STUDENT NAME / CANDIDATE NAME]</div>
+        <div style="color: #64748b; font-weight: normal;">Roll No: [ROLL NUMBER / REGISTRATION ID]</div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="header-running">Insurance Fraud Claims Detection Engine</div>
+
+    <!-- CONTENTS -->
+    <h1>CONTENTS</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 80%;">Chapter / Topic</th>
+                <th style="width: 20%; text-align: center;">Section</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>1. Introduction</strong></td><td align="center">1</td></tr>
+            <tr><td><strong>2. Company / Organization Details</strong></td><td align="center">2</td></tr>
+            <tr><td><strong>3. Technologies Used</strong></td><td align="center">3</td></tr>
+            <tr><td><strong>4. Project: Insurance Fraud Claims Detection Engine</strong></td><td align="center">4</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.1 Objective</td><td align="center">4.1</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.2 Problem Statement</td><td align="center">4.2</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.3 Project Planning and Requirements Gathering</td><td align="center">4.3</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.4 Technology Stack</td><td align="center">4.4</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.5 Dataset Description</td><td align="center">4.5</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.6 System Architecture & Methodology</td><td align="center">4.6</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.7 Data Preprocessing</td><td align="center">4.7</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.8 Model Building – XGBoost Classifier</td><td align="center">4.8</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.9 Application Development – Streamlit Web Application</td><td align="center">4.9</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9.1 Dashboard Page</td><td align="center">4.9.1</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9.2 Claim Risk Screening Page</td><td align="center">4.9.2</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9.3 Model Performance & Analytics Page</td><td align="center">4.9.3</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9.4 About Project Page</td><td align="center">4.9.4</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.10 Security & Data Validation</td><td align="center">4.10</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.11 Testing & Quality Assurance</td><td align="center">4.11</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.12 Deployment</td><td align="center">4.12</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.13 Maintenance</td><td align="center">4.13</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.14 Tools Used</td><td align="center">4.14</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.15 Results and Evaluation</td><td align="center">4.15</td></tr>
+            <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.16 Exploratory Data Analysis</td><td align="center">4.16</td></tr>
+            <tr><td><strong>5. Course / Internship Experience</strong></td><td align="center">5</td></tr>
+            <tr><td><strong>6. Conclusion</strong></td><td align="center">6</td></tr>
+            <tr><td><strong>7. Certificate of Internship</strong></td><td align="center">7</td></tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <div class="header-running">Insurance Fraud Claims Detection Engine</div>
+
+    <!-- 1. INTRODUCTION -->
+    <h2>1. INTRODUCTION</h2>
+    <p>This report outlines the experiences, insights and technical work carried out during the Data Science and Machine Learning internship. As part of the internship, I designed and developed the <strong>“INSURANCE FRAUD CLAIMS DETECTION ENGINE”</strong>, a machine-learning based solution that predicts whether an automobile insurance claim is suspicious or legitimate, and flags at-risk claims early so that human adjusters can take preventive, targeted investigative action.</p>
+
+    <p>Insurance fraud is one of the most critical operational challenges faced by insurance companies, causing tens of billions of dollars in annual losses. Traditional detection systems rely on static heuristic filters or manual audits. Despite this, fraudsters evolve sophisticated tactics to bypass static rules, making automated predictive modeling necessary.</p>
+
+    <p>This project applies supervised machine learning techniques to historical claim data—covering customer demographics, policy attributes, incident dynamics, collision severity, witnesses, police reports, and monetary damage amounts—to build an end-to-end predictive pipeline and interactive Streamlit web application. The system operates as an early-warning screening tool: rather than conclusively declaring fraud, it computes calibrated probabilities, segments claims into intuitive risk categories (<strong>LOW</strong>, <strong>MEDIUM</strong>, <strong>HIGH</strong>), and provides explainable decision support.</p>
+
+    <!-- 2. COMPANY DETAILS -->
+    <h2>2. COMPANY / ORGANIZATION DETAILS</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Name of Project</strong></td><td>Insurance Fraud Claims Detection Engine</td></tr>
+            <tr><td><strong>Domain</strong></td><td>Artificial Intelligence & Machine Learning</td></tr>
+            <tr><td><strong>Industry Focus</strong></td><td>InsurTech, Financial Risk Management & Decision Support</td></tr>
+            <tr><td><strong>Internship Duration</strong></td><td>2 Months</td></tr>
+            <tr><td><strong>Internship Track</strong></td><td>Data Science / Machine Learning Engineering</td></tr>
+            <tr><td><strong>Mode of Internship</strong></td><td>Project-based, mentor-guided internship</td></tr>
+            <tr><td><strong>Key Skill Areas</strong></td><td>Python, Scikit-Learn, XGBoost, SMOTE, Streamlit, Cloud Deployment</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 3. TECHNOLOGIES USED -->
+    <h2>3. TECHNOLOGIES USED</h2>
+    <ul>
+        <li><strong>Python</strong>: Core programming language for data loading, preprocessing, modeling, and dashboard development.</li>
+        <li><strong>Pandas & NumPy</strong>: Used for tabular data manipulation, missing value encoding, date parsing, and vector calculations.</li>
+        <li><strong>Scikit-Learn</strong>: Provided ColumnTransformer, Pipeline, StandardScaler, OneHotEncoder, and evaluation metrics.</li>
+        <li><strong>Imbalanced-Learn (imblearn)</strong>: Provided SMOTE for cross-validated synthetic oversampling.</li>
+        <li><strong>XGBoost</strong>: Tuned gradient-boosted decision tree algorithm for robust binary classification.</li>
+        <li><strong>Streamlit & Plotly</strong>: Built the interactive multi-page web application with dynamic risk gauges.</li>
+        <li><strong>Joblib</strong>: Handled pipeline serialization (<code>best_model.joblib</code>) for fast inference.</li>
+        <li><strong>Pytest</strong>: Automated unit testing suite ensuring 100% test integrity across 9 tests.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <div class="header-running">Insurance Fraud Claims Detection Engine</div>
+
+    <!-- 4. PROJECT DETAILS -->
+    <h2>4. PROJECT: INSURANCE FRAUD CLAIMS DETECTION ENGINE</h2>
+
+    <h3>4.1 Objective</h3>
+    <p>The main objective is to identify potentially fraudulent automobile insurance claims well in advance, enabling claims adjusters to prioritize investigations, reduce financial leakage, and expedite legitimate payouts.</p>
+
+    <h3>4.2 Problem Statement</h3>
+    <p>Given 39 heterogeneous customer, policy, incident, and vehicle attributes, can we train a supervised classifier that accurately predicts the probability of fraud (<code>fraud_reported</code> = 1), while controlling false alarms and presenting actionable insights via an intuitive web dashboard?</p>
+
+    <h3>4.3 Dataset Description</h3>
+    <p>The dataset contains 1,000 claim records with 39 predictor attributes and 1 binary target (<code>fraud_reported</code>: 753 Legitimate vs 247 Fraudulent claims). Missing values encoded as <code>'?'</code> in <code>collision_type</code>, <code>property_damage</code>, and <code>police_report_available</code> were transformed into explicit <code>'MISSING'</code> tokens.</p>
+
+    <h3>4.4 Preprocessing & Architecture</h3>
+    <pre><code>def create_preprocessor_pipeline(num_cols, cat_cols):
+    num_pipeline = Pipeline([
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler())
+    ])
+    cat_pipeline = Pipeline([
+        ("imputer", SimpleImputer(strategy="constant", fill_value="MISSING")),
+        ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False))
+    ])
+    return ColumnTransformer(transformers=[
+        ("num", num_pipeline, num_cols),
+        ("cat", cat_pipeline, cat_cols)
+    ], remainder="drop")</code></pre>
+
+    <h3>4.5 Model Performance & Evaluation</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Model Algorithm</th>
+                <th>CV Recall</th>
+                <th>CV Precision</th>
+                <th>CV F1-Score</th>
+                <th>CV ROC-AUC</th>
+                <th>CV PR-AUC</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>XGBoost (Tuned)</strong></td><td><strong>0.7226</strong></td><td><strong>0.6550</strong></td><td><strong>0.6862</strong></td><td><strong>0.8474</strong></td><td><strong>0.6629</strong></td></tr>
+            <tr><td>Logistic Regression</td><td>0.7424</td><td>0.6220</td><td>0.6767</td><td>0.8657</td><td>0.6676</td></tr>
+            <tr><td>Gradient Boosting</td><td>0.7372</td><td>0.6621</td><td>0.6977</td><td>0.8642</td><td>0.6464</td></tr>
+            <tr><td>Decision Tree</td><td>0.5508</td><td>0.5488</td><td>0.5498</td><td>0.7007</td><td>0.6086</td></tr>
+            <tr><td>Random Forest</td><td>0.4247</td><td>0.6012</td><td>0.4972</td><td>0.8520</td><td>0.6055</td></tr>
+            <tr><td>K-Nearest Neighbors</td><td>0.8786</td><td>0.2671</td><td>0.4091</td><td>0.5616</td><td>0.4133</td></tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>Final Test Set Results (Optimal Threshold = 0.45):</strong><br>
+        • Accuracy: <strong>84.00%</strong> | Precision: <strong>64.91%</strong> | Recall: <strong>75.51%</strong> | ROC-AUC: <strong>84.12%</strong><br>
+        • Confusion Matrix: <strong>TN = 131, FP = 20, FN = 12, TP = 37</strong> (Caught 37 of 49 fraudulent claims).
+    </div>
+
+    <!-- 5. INTERNSHIP EXPERIENCE -->
+    <h2>5. COURSE / INTERNSHIP EXPERIENCE</h2>
+    <ul>
+        <li><strong>Industry-Ready Workflow</strong>: Transitioned from raw messy data to a fully tested, deployed cloud application.</li>
+        <li><strong>Imbalanced Classification Mastery</strong>: Solved severe class imbalance using SMOTE and threshold optimization.</li>
+        <li><strong>Full-Stack Streamlit Development</strong>: Built interactive dashboards with custom CSS and Plotly risk indicators.</li>
+        <li><strong>Deployment & Quality Engineering</strong>: Authored 9 unit tests with Pytest and deployed to Streamlit Community Cloud.</li>
+    </ul>
+
+    <!-- 6. CONCLUSION -->
+    <h2>6. CONCLUSION</h2>
+    <p>The project successfully delivers an end-to-end predictive screening engine achieving an 84.00% accuracy and 75.51% recall. Deploying the system to Streamlit Cloud bridges the gap between machine learning models and operational claims workflows, empowering adjusters to detect fraud proactively.</p>
+
+    <div class="page-break"></div>
+
+    <!-- 7. CERTIFICATE -->
+    <div class="certificate-card">
+        <div class="certificate-title">Certificate of Internship</div>
+        <p style="font-size: 11pt; margin-bottom: 25px;">This is to certify that</p>
+        <p style="font-size: 16pt; font-weight: 700; color: #1e3a8a; margin: 10px 0;">[STUDENT / CANDIDATE NAME]</p>
+        <p style="font-size: 11pt; color: #64748b; margin-bottom: 25px;">Roll No: [ROLL NUMBER / REGISTRATION ID]</p>
+        <p style="font-size: 10.5pt; line-height: 1.8; text-align: center; max-width: 600px; margin: 0 auto 30px auto;">
+            has successfully completed a 2-Month Data Science & Machine Learning Internship on the project titled:
+            <br><strong>"INSURANCE FRAUD CLAIMS DETECTION ENGINE: MACHINE LEARNING RISK SCREENING FRAMEWORK"</strong>.
+            <br>During this period, the candidate demonstrated proficiency in Data Preprocessing, Supervised Learning, Imbalanced Classification (SMOTE), XGBoost Tuning, and Streamlit Cloud Deployment.
+        </p>
+
+        <div class="signature-row" style="padding: 20px 40px 0 40px;">
+            <div>
+                ____________________________<br>
+                Project Supervisor
+            </div>
+            <div>
+                ____________________________<br>
+                Department Head / Mentor
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
